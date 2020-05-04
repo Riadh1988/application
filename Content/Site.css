@@ -1,0 +1,157 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.plus {
+    width: 25px;
+    height: 1px;
+    background-color: black;
+    opacity: 1;
+    transition: all 0.2s ease;
+}
+
+    .plus:before {
+        content: " ";
+        display: block;
+        width: 25px;
+        height: 1px;
+        background-color: black;
+        transform: rotate(90deg);
+    }
+
+.project {
+    background-color: #f0f0f0;
+    border-radius: 3px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+    height: 370px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.project__add {
+    background-color: #fff;
+    border-radius: 3px;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+    .project__add.project__add--bounce {
+        animation: bounce 0.2s alternate;
+    }
+
+.project__form {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    padding: 2rem;
+    visibility: hidden;
+    border-radius: 3px;
+    background-color: #fff;
+    pointer-events: none;
+    transition: all 0.2s cubic-bezier(0.895, 0.03, 0.685, 0.22) 0s;
+    transform: translate3d(-50%, -90%, 0);
+    transform-origin: 50%;
+}
+
+    .project__form header {
+        display: flex;
+        align-items: center;
+    }
+
+    
+
+    .project__form h2 {
+        margin: 0;
+    }
+
+    
+
+.project__close {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    margin-left: auto;
+    position: relative;
+    transform: rotate(45deg);
+}
+
+    .project__close:before, .project__close:after {
+        content: " ";
+        display: block;
+        width: 15px;
+        height: 1px;
+        top: 50%;
+        background-color: black;
+        transform-origin: 50%;
+        position: absolute;
+    }
+
+    .project__close:after {
+        transform: rotate(0deg);
+    }
+
+    .project__close:before {
+        transform: translateX(0) rotate(90deg);
+    }
+
+[data-state="active"] .project__form {
+    width: 100%;
+    height: 370px;
+    visibility: visible;
+    transform: translate3d(-50%, -50%, 0);
+    pointer-events: auto;
+    transition-delay: 0.2s;
+}
+
+[data-state="active"] .project__form--active > * {
+    opacity: 1;
+}
+
+[data-state="active"] .plus {
+    opacity: 0;
+}
+
+@keyframes bounce {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
